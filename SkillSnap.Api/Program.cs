@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using SkillSnap.Api;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,8 +20,12 @@ builder.Services.AddCors(options =>
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+.AddEntityFrameworkStores<SkillSnapContext>();
+
 builder.Services.AddDbContext<SkillSnapContext>(options =>
     options.UseSqlite("Data Source=skillsnap.db"));
+
 
 var app = builder.Build();
 
