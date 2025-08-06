@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 
 builder.Services.AddDbContext<SkillSnapContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("SkillSnapDatabase")));
+    options.UseSqlite("Data Source=skillsnap.db"));
 
 var app = builder.Build();
 

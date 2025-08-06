@@ -71,11 +71,11 @@ obj/
 
 # Ignore SQLite database
 *.db
-# SkillSnap.Api/skillsnap.db
+SkillSnap.Api/skillsnap.db
 
 # Ignore Visual Studio user-specific and workspace files
 .vs/
 
 SkillSnap.Api/appsettings.Development.json
-# SkillSnap.Api/skillsnap.db-shm
-# SkillSnap.Api/skillsnap.db-wal
+SkillSnap.Api/skillsnap.db-shm
+SkillSnap.Api/skillsnap.db-wal
