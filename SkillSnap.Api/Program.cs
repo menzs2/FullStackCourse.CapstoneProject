@@ -1,8 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using SkillSnap.Api;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+builder.Services.AddDbContext<SkillSnapContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("SkillSnapDatabase")));
 
 var app = builder.Build();
 

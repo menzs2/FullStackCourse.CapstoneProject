@@ -10,6 +10,7 @@ namespace SkillSnap.Api
         public required string Name { get; set; }
         public required string Level { get; set; }
         [ForeignKey("PortfolioUser")]
+        [InverseProperty("Skills")]
         public int PortfolioUserId { get; set; }
         public required PortfolioUser PortfolioUser { get; set; }
     }

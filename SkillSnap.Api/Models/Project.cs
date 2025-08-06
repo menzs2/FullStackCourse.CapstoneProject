@@ -15,6 +15,7 @@ namespace SkillSnap.Api
         public string? ImageUrl { get; set; }
 
         [ForeignKey("PortfolioUser")]
+        [InverseProperty("Project")]
         public int PortfolioUserId { get; set; }
 
         public required PortfolioUser PortfolioUser { get; set; }
