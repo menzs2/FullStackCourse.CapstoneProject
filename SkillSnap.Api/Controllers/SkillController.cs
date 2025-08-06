@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using SkillSnap.Shared.Models;
 
 namespace SkillSnap.Api
@@ -21,6 +22,7 @@ namespace SkillSnap.Api
             return skills != null && skills.Any() ? Ok(skills) : NotFound("No skills found.");
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult CreateSkill([FromBody] Skill skill)
         {
