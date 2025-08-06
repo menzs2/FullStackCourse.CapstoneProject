@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SkillSnap.Api
+namespace SkillSnap.Shared.Models
 {
     public class PortfolioUser
     {

@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkillSnap.Api", "SkillSnap.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkillSnap.Client", "SkillSnap.Client\SkillSnap.Client.csproj", "{47FD49F7-A231-46AC-A2F2-AE70182E13FC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SkillSnap.Shared", "SkillSnap.Shared", "{CF113BEF-36B1-D7E8-355B-45E1DCDEE0E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "SkillSnap.Shared\Shared.csproj", "{C81CF070-2AF0-4412-8455-49757C7BFDBA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,8 +45,23 @@ Global
 		{47FD49F7-A231-46AC-A2F2-AE70182E13FC}.Release|x64.Build.0 = Release|Any CPU
 		{47FD49F7-A231-46AC-A2F2-AE70182E13FC}.Release|x86.ActiveCfg = Release|Any CPU
 		{47FD49F7-A231-46AC-A2F2-AE70182E13FC}.Release|x86.Build.0 = Release|Any CPU
+		{C81CF070-2AF0-4412-8455-49757C7BFDBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C81CF070-2AF0-4412-8455-49757C7BFDBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C81CF070-2AF0-4412-8455-49757C7BFDBA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C81CF070-2AF0-4412-8455-49757C7BFDBA}.Debug|x64.Build.0 = Debug|Any CPU
+		{C81CF070-2AF0-4412-8455-49757C7BFDBA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C81CF070-2AF0-4412-8455-49757C7BFDBA}.Debug|x86.Build.0 = Debug|Any CPU
+		{C81CF070-2AF0-4412-8455-49757C7BFDBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C81CF070-2AF0-4412-8455-49757C7BFDBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C81CF070-2AF0-4412-8455-49757C7BFDBA}.Release|x64.ActiveCfg = Release|Any CPU
+		{C81CF070-2AF0-4412-8455-49757C7BFDBA}.Release|x64.Build.0 = Release|Any CPU
+		{C81CF070-2AF0-4412-8455-49757C7BFDBA}.Release|x86.ActiveCfg = Release|Any CPU
+		{C81CF070-2AF0-4412-8455-49757C7BFDBA}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C81CF070-2AF0-4412-8455-49757C7BFDBA} = {CF113BEF-36B1-D7E8-355B-45E1DCDEE0E8}
 	EndGlobalSection
 EndGlobal
