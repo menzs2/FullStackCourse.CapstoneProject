@@ -4,3 +4,5 @@ POST {{SkillSnap_Api_HostAddress}}/api/seed/
 Accept: application/json
 
 ###
+
+GET {{SkillSnap_Api_HostAddress}}/api/project/
