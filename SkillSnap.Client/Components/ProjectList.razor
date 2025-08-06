@@ -1,0 +1,26 @@
+@using Shared.Models;
+
+<div class="project-list">
+    @foreach (var project in Projects)
+    {
+        <div class="project-item" @onclick="() => SelectProject(project)">
+            <h3>@project.Title</h3>
+            <p>@project.Description</p>
+        </div>
+    }
+    </div>
+
+@code {
+    [Parameter]
+    public List<Project> Projects { get; set; } = new List<Project>();
+
+    [Parameter]
+    public EventCallback<Project> OnProjectSelected { get; set; }
+
+    private async Task SelectProject(Project project)
+    {
+        await OnProjectSelected.InvokeAsync(project);
+    }
+}
+
+

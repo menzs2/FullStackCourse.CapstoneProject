@@ -1,0 +1,13 @@
+@using Shared.Models;
+
+<div class="skill-tags">
+    @foreach (var skill in User.Skills)
+    {
+        <span class="skill-tag">@skill.Name (@skill.Level)</span>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public PortfolioUser? User { get; set; }
+}

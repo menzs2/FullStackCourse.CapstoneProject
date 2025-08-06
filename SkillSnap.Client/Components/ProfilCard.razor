@@ -1,0 +1,12 @@
+@using Shared.Models;
+
+<div class="profile-card">
+    <h2>@User.Name</h2>
+    <p>@User.Bio</p>
+    <img src="@User.ProfilePictureUrl" alt="@User.Name's profile picture" />
+</div>
+
+@code {
+    [Parameter]
+    public PortfolioUser? User { get; set; }
+}
