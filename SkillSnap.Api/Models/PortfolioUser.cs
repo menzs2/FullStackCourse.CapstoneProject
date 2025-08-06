@@ -15,8 +15,8 @@ namespace SkillSnap.Api
         public string? ProfilePictureUrl { get; set; }
 
         [InverseProperty("PortfolioUser")]
-        public ICollection<Project> Projects { get; set; } = new List<Project>();
+        public List<Project> Projects { get; set; } = new List<Project>();
         [InverseProperty("PortfolioUser")]
-        public ICollection<Skill> Skills { get; set; } = new List<Skill>();
+        public List<Skill> Skills { get; set; } = new List<Skill>();
     }
 }

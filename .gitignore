@@ -79,3 +79,6 @@ SkillSnap.Api/skillsnap.db
 SkillSnap.Api/appsettings.Development.json
 SkillSnap.Api/skillsnap.db-shm
 SkillSnap.Api/skillsnap.db-wal
+
+# Ignore http files
+*.http
