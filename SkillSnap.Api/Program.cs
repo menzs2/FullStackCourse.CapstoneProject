@@ -35,7 +35,6 @@ builder.Services.AddSwaggerGen(c =>
 
 });
 
-
 builder.Services.AddOpenApi();
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
@@ -66,6 +65,8 @@ builder.Services.AddAuthorization();
 builder.Services.AddMemoryCache();
 
 builder.Services.AddScoped<UserManager<ApplicationUser>>();
+builder.Services.AddScoped(provider => jwtSettings);
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
