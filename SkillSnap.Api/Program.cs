@@ -1,4 +1,3 @@
-using System.Reflection;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -34,10 +33,6 @@ builder.Services.AddSwaggerGen(c =>
         Description = "API documentation for the SkillSnap project"
     });
 
-    // Enable XML comments for Swagger
-    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-    c.IncludeXmlComments(xmlPath);
 });
 
 
@@ -68,14 +63,18 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 
 builder.Services.AddAuthorization();
+builder.Services.AddMemoryCache();
 
 builder.Services.AddScoped<UserManager<ApplicationUser>>();
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+
+    // Enable Swagger UI in development
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
@@ -83,4 +82,5 @@ app.MapControllers();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseCors();
 app.Run();

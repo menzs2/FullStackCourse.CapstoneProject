@@ -16,6 +16,7 @@ namespace SkillSnap.Api
             _context = context;
         }
 
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet]
         public IActionResult GetSkills()
         {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using SkillSnap.Shared.Models;
 
 namespace SkillSnap.Api
@@ -10,17 +11,33 @@ namespace SkillSnap.Api
     public class ProjectController : ControllerBase
     {
         private readonly SkillSnapContext _context;
+        private readonly IMemoryCache _inMemoryStoreCache;
+        private const string cacheKey = "projectsCache";
 
-        public ProjectController(SkillSnapContext context)
+        public ProjectController(SkillSnapContext context, IMemoryCache inMemoryStoreCache)
         {
             _context = context;
+            _inMemoryStoreCache = inMemoryStoreCache;
         }
 
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet]
         public IActionResult GetProjects()
         {
+
+            if (_inMemoryStoreCache.TryGetValue(cacheKey, out List<Project> cachedProjects))
+            {
+                return Ok(cachedProjects);
+            }
+
             var projects = _context.Projects.ToList();
-            return projects != null && projects.Any() ? Ok(projects) : NotFound("No projects found.");
+            if (projects != null && projects.Any())
+            {
+                _inMemoryStoreCache.Set(cacheKey, projects);
+                return Ok(projects);
+            }
+
+            return NotFound("No projects found.");
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
@@ -34,6 +51,8 @@ namespace SkillSnap.Api
 
             _context.Projects.Add(project);
             _context.SaveChanges();
+            // Clear the cache after adding a new project
+            _inMemoryStoreCache.Remove(cacheKey);
             return CreatedAtAction(nameof(GetProjects), new { id = project.Id }, project);
         }
     }
