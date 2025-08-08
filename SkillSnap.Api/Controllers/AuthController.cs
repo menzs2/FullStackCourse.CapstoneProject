@@ -23,12 +23,12 @@ namespace SkillSnap.Api
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             RoleManager<IdentityRole> roleManager,
-            IConfiguration configuration)
+            IConfigurationSection configuration)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
-            _configuration = configuration.GetSection("Jwt");
+            _configuration = configuration;
         }
 
         [HttpPost("login")]

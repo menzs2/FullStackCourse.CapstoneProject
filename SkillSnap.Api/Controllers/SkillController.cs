@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SkillSnap.Shared.Models;
 
 namespace SkillSnap.Api
@@ -22,7 +23,7 @@ namespace SkillSnap.Api
             return skills != null && skills.Any() ? Ok(skills) : NotFound("No skills found.");
         }
 
-        [Authorize]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPost]
         public IActionResult CreateSkill([FromBody] Skill skill)
         {

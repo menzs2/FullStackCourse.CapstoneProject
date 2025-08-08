@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SkillSnap.Shared.Models;
 
@@ -21,8 +22,8 @@ namespace SkillSnap.Api
             var projects = _context.Projects.ToList();
             return projects != null && projects.Any() ? Ok(projects) : NotFound("No projects found.");
         }
-        
-        [Authorize]
+
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPost]
         public IActionResult CreateProject([FromBody] Project project)
         {
