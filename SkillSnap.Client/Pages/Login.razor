@@ -1,5 +1,7 @@
 @page "/login"
 @using System.ComponentModel.DataAnnotations
+@inject HttpClient HttpClient;
+@inject JSRuntime JSRuntime;
 
 <h3>Login</h3>
 
@@ -29,8 +31,12 @@
 
     private async Task HandleLogin()
     {
-        // Implement login logic here
-        // For example, call an authentication service
+        HttpClient.DefaultRequestHeaders.Clear();
+        var response = await HttpClient.PostAsJsonAsync("api/auth/login", loginModel);
+        response.EnsureSuccessStatusCode();
+        var token = await response.Content.ReadAsStringAsync();
+        await JSRuntime.InvokeVoidAsync("sessionStorage.setItem", "authToken", token);
+        HttpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
     }
 
     public class LoginModel
