@@ -1,0 +1,25 @@
+@using Shared.Models;
+
+<div class="profile-card">
+    <h2>@User.Name</h2>
+    <p>@User.Bio</p>
+    @if (User.Projects != null && User.Projects.Any())
+    {
+        <ProjectList Projects="User.Projects" OnProjectSelected="OnProjectSelected" />
+    }
+    else
+    {
+        <p>No projects found.</p>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public PortfolioUser? User { get; set; }
+
+    public void OnProjectSelected(Project project)
+    {
+        // Handle project selection logic here
+        Console.WriteLine($"Selected project: {project.Title}");
+    }
+}

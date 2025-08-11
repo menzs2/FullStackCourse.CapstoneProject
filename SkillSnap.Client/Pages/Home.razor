@@ -1,17 +1,36 @@
 ﻿@page "/"
 
 @using Microsoft.AspNetCore.Components.Authorization
+@using SkillSnap.Shared.Models
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inject NavigationManager NavigationManager
+@inject PortfolioService PortfolioService
+
 
 <PageTitle>Home</PageTitle>
 
+<div>
+    @if (portfolios != null && portfolios.Any())
+    {
+        @foreach (var portfolio in portfolios)
+        {
+            <SkillSnap.Client.Components.ProfileCard User=portfolio />
+        }
+}
+else
+{
+    <p>No portfolios found.</p>
+}
+</div>
+
 @code {
+    private List<PortfolioUser> portfolios = new List<PortfolioUser>();
     protected override async Task OnInitializedAsync()
     {
         if (await AuthenticationStateProvider.GetAuthenticationStateAsync() is { User.Identity.IsAuthenticated: true } authState)
         {
             Console.WriteLine("User is authenticated");
+            var portfolio = await PortfolioService.GetPortfoliosAsync();
         }
         else
         {

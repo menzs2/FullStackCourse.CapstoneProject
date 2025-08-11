@@ -12,6 +12,7 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:5165") });
 builder.Services.AddScoped<SkillService>();
 builder.Services.AddScoped<ProjectService>();
+builder.Services.AddScoped<PortfolioService>();
 builder.Services.AddAuthentication();
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 
