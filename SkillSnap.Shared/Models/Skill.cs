@@ -9,9 +9,9 @@ namespace SkillSnap.Shared.Models
         public int Id { get; set; }
         public required string Name { get; set; }
         public required string Level { get; set; }
+
         [ForeignKey("PortfolioUser")]
-        [InverseProperty("Skills")]
         public int PortfolioUserId { get; set; }
-        public PortfolioUser? PortfolioUser { get; set; }
+       
     }
 }

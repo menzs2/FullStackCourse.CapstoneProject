@@ -37,21 +37,18 @@ namespace SkillSnap.Api
                 Title = "Portfolio Website",
                 Description = "A personal portfolio website to showcase my skills and projects.",
                 PortfolioUserId = user.Id,
-                PortfolioUser = user
             });
             user.Skills.Add(new Skill
             {
                 Name = "C#",
                 Level = "Advanced",
                 PortfolioUserId = user.Id,
-                PortfolioUser = user
             });
             user.Skills.Add(new Skill
             {
                 Name = "Blazor",
                 Level = "Intermediate",
                 PortfolioUserId = user.Id,
-                PortfolioUser = user
             });
             _context.SaveChanges();
             return Ok("Sample data inserted.");
